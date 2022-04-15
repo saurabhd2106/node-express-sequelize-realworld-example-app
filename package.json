@@ -10,8 +10,7 @@
     "build": "cd react-redux-realworld-example-app && npm run build",
     "deploy": "git push heroku master",
     "dev": "concurrently --kill-others 'npm run front --' 'npm run back --'",
-    "front": "cd react-redux-realworld-example-app && npm start",
-    "preinstall": "cd react-redux-realworld-example-app && npm install",
+    "front": "cd react-redux-realworld-example-app && npm start"
     "start": "node --unhandled-rejections=strict ./app.js",
     "start-prod": "env $(cat .env | xargs) NODE_ENV=production DATABASE_URL='postgres://node_express_sequelize_realworld_user:a@localhost:5432/node_express_sequelize_realworld' npm start",
     "test": "mocha test --ignore-leaks test.js",
