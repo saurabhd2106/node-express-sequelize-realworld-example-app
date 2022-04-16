@@ -52,6 +52,20 @@ stages:
 
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
+- stage: Test
+  displayName: Test stage
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+    - job: Test
+      displayName: Test
+      pool:
+        vmImage: $(vmImageName)
+      steps:
+
+        - script: |
+            npm test
+          displayName: 'npm test'
 
 - stage: Deploy
   displayName: Deploy stage
