@@ -62,7 +62,6 @@ stages:
       pool:
         vmImage: $(vmImageName)
       steps:
-
         - script: |
             npm install mocha --save-dev
             npm test
