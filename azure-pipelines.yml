@@ -87,6 +87,7 @@ stages:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
               appName: $(webAppName)
+              appSettings: '-Port 8080:3000'
               runtimeStack: 'NODE|14.18'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'npm start'
