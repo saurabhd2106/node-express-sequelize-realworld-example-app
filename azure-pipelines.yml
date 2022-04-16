@@ -32,7 +32,7 @@ stages:
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x'
+        versionSpec: '14.x'
       displayName: 'Install Node.js'
 
     - script: |
@@ -64,12 +64,13 @@ stages:
       steps:
 
         - script: |
+            npm install mocha --save-dev
             npm test
           displayName: 'npm test'
 
 - stage: Deploy
   displayName: Deploy stage
-  dependsOn: Build
+  dependsOn: Test
   condition: succeeded()
   jobs:
   - deployment: Deploy
