@@ -22,16 +22,6 @@ variables:
   vmImageName: 'ubuntu-latest'
 
 stages:
-- stage: Checkout
-  displayName: Checkout
-  jobs:
-  - job: checkout
-    displayName: Checkout
-    pool: 
-      vmImage: $(vmImageName) 
-    steps:
-    - checkout: self
-      submodules: true
 
 - stage: Build
   displayName: Build stage
@@ -42,6 +32,9 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
+    - checkout: self
+      submodules: true
+      
     - task: NodeTool@0
       inputs:
         versionSpec: '14.x'
