@@ -3,6 +3,7 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+
 trigger:
 - master
 
@@ -21,6 +22,17 @@ variables:
   vmImageName: 'ubuntu-latest'
 
 stages:
+- stage: Checkout
+  displayName: Checkout
+  jobs:
+  - job: checkout
+    displayName: Checkout
+    pool: 
+      vmImage: $(vmImageName) 
+    steps:
+    - checkout: self
+      submodules: true
+
 - stage: Build
   displayName: Build stage
   jobs:
